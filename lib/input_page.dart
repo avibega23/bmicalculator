@@ -14,9 +14,24 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = inactiveCardColor;
+  Color femaleCardColor = inactiveCardColor;
 
-   Color maleCardColor = inactiveCardColor;
-   Color femaleCardColor = inactiveCardColor;
+  void updateColour(int gender) {
+    if (gender == 1) {
+      if (maleCardColor == inactiveCardColor) {
+        maleCardColor = activeCardColor;
+        femaleCardColor = inactiveCardColor;
+      }
+    }
+    if (gender == 2) {
+      if (femaleCardColor == inactiveCardColor) {
+        femaleCardColor = activeCardColor;
+        maleCardColor = inactiveCardColor;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +51,7 @@ class _InputPageState extends State<InputPage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          maleCardColor = activeCardColor;
-                          femaleCardColor = inactiveCardColor;
+                          updateColour(1);
                         });
                       },
                       child: ReusableCard(
@@ -53,8 +67,9 @@ class _InputPageState extends State<InputPage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          femaleCardColor = activeCardColor;
-                          maleCardColor = inactiveCardColor;
+                          // femaleCardColor = activeCardColor;
+                          // maleCardColor = inactiveCardColor;
+                          updateColour(2);
                         });
                       },
                       child: ReusableCard(
@@ -69,12 +84,12 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-             Expanded(
+            Expanded(
               child: ReusableCard(
                 colour: activeCardColor,
               ),
             ),
-             Expanded(
+            Expanded(
               child: Row(
                 children: [
                   Expanded(
