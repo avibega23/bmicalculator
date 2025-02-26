@@ -19,7 +19,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-    Gender? selectedGender;
+  Gender? selectedGender;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,36 +36,34 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
+                    child: ReusableCard(
+                      onPress: () {
                         setState(() {
                           selectedGender = Gender.male;
                         });
                       },
-                      child: ReusableCard(
-                        colour: (selectedGender == Gender.male)?activeCardColor:inactiveCardColor,
-                        cardChild: const ContentCard(
-                          icon: FontAwesomeIcons.mars,
-                          text: "MALE",
-                        ),
+                      colour: (selectedGender == Gender.male)
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: const ContentCard(
+                        icon: FontAwesomeIcons.mars,
+                        text: "MALE",
                       ),
                     ),
                   ),
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
+                    child: ReusableCard(
+                      onPress: (){
                         setState(() {
-                          // femaleCardColor = activeCardColor;
-                          // maleCardColor = inactiveCardColor;
                           selectedGender = Gender.female;
                         });
                       },
-                      child: ReusableCard(
-                        colour: (selectedGender == Gender.female)?activeCardColor:inactiveCardColor,
-                        cardChild: const ContentCard(
-                          icon: FontAwesomeIcons.venus,
-                          text: "FEMALE",
-                        ),
+                      colour: (selectedGender == Gender.female)
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: const ContentCard(
+                        icon: FontAwesomeIcons.venus,
+                        text: "FEMALE",
                       ),
                     ),
                   ),
