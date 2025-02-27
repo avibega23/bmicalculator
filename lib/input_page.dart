@@ -94,9 +94,11 @@ class _InputPageState extends State<InputPage> {
                     ),
                     Slider(
                       value: height.toDouble(),
+                      thumbColor: kBottomContainerColor,
+                      
                       min: 120.0,
                       max: 220.0,
-                      activeColor: kBottomContainerColor,
+                      activeColor: Colors.white,
                       onChanged: (double value) {
                         setState(
                           () {
